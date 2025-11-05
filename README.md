@@ -1,2 +1,2 @@
-# WebProject2
-Kodutoo
+# WebProject1
+Veebiprogrammeerimine
