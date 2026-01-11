@@ -18,7 +18,19 @@
 		<a href="/eestifilm">Eesti film</a>
 	</nav>
 	<hr>
-	<p>See leht on loodud <a href="https://www.tlu.ee">Tallinna Ülikoolis</a> veebiprogrammeerimise kurusel ja ei oma mõistlikku sisu.</p>
-	<p>Algul lihtsalt HTML ja varsti juba Node.Js.</p>
+	<h2>Eesti film</h2>
+	<ul>
+		<li><a href="/eestifilm/inimesed">Eesti filmiinimesed</a></li>
+		<li><a href="/eestifilm/inimesed_add">Eesti filmiinimeste lisamine</a></li>
+		<li><a href="/eestifilm/ametid">Eesti filmindusametid</a></li>
+		<li><a href="/eestifilm/ametid_add">Eesti filmindusameti lisamine</a></li>
+	</ul>
+	<hr>
+	<h2>Filmiinimeste ametid</h2>
+	<ol>
+		<% positionList.forEach(function(listItem){ %>
+			<li><%= listItem.name %>, - <%= listItem.description %></li>
+		<% });%>
+	</ol>
 </body>
 </html>

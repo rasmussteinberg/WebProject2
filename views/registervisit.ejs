@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Rasmus Steinberg, veebiprogrammeerimine</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
     <img src="/images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
@@ -12,12 +13,12 @@
     <nav>
 		<a href="/">Avaleht</a>
 		<a href="/vanasonad">Vanasõnad</a>
-		<a href="/regvisit">Registreeri külastus</a>
-        <a href="/visitlog">Registreeritud külastajad</a>
+		<a href="/visitlog/registervisit">Registreeri külastus</a>
+		<a href="/visitlog">Registreeritud külastajad</a>
     </nav>
     <hr>
     <h2>Pane end külastajana kirja</h2>
-    <form method="POST" action="/regsuccess">
+    <form method="POST" action="/visitlog/regsuccess">
         <label for="firstNameInput">Eesnimi</label>
         <input id="firstNameInput" type="text" name="firstNameInput" placeholder="Sisesta enda eesnimi">
         <label for="lastNameInput">Perekonnanimi</label>
