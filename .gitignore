@@ -1,6 +1,8 @@
 # Node dependencies
 node_modules/
 
+vp2025config.js
+
 # Logs
 logs/
 *.log
