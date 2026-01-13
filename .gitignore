@@ -48,6 +48,7 @@ coverage/
 
 # App-specific generated files
 public/txt/visitlog.txt
+public/gallery/
 
 # Images folder is tracked intentionally
 # images/
