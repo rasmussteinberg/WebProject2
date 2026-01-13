@@ -2,9 +2,11 @@
 <html lang="et">
 <head>
 	<meta charset="utf-8">
-	<title>Rasmus Steinberg, veebiprogrammeerimine</title>
+	<title>Fotogalerii</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="/style/style.css">
+	<link rel="stylesheet" href="/style/gallery.css">
+	<script src="/script/gallery.js" defer></script>
 </head>
 <body>
     <img src="/images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
@@ -23,19 +25,20 @@
 		<a href="/signup">Kasutajakonto loomine</a>
 	</nav>
     <hr>
-	<h2>Eesti film</h2>
-	<ul>
-		<li><a href="/eestifilm/inimesed">Eesti filmiinimesed</a></li>
-		<li><a href="/eestifilm/inimesed_add">Eesti filmiinimeste lisamine</a></li>
-		<li><a href="/eestifilm/ametid">Eesti filmindusametid</a></li>
-		<li><a href="/eestifilm/ametid_add">Eesti filmindusameti lisamine</a></li>
-	</ul>
-	<hr>
-	<h2>Filmiinimeste ametid</h2>
-	<ol>
-		<% positionList.forEach(function(listItem){ %>
-			<li><%= listItem.name %>, - <%= listItem.description %></li>
-		<% });%>
-	</ol>
+	<dialog id="modal" class="modalarea">
+		<span id="modalClose" class="modalclose">&times;</span>
+		<div class="modalhorizontal">
+			<div class="modalvertical">
+				<p id="modalCaption"></p>
+				<img id="modalImage" src="/images/empty.png" alt="Galeriipilt">
+			</div>
+		</div>
+	</dialog>
+	<h2>Fotogalerii</h2>
+	<div id="gallery" class="gallery">
+		<% galleryData.forEach(function(image){ %>
+			<img src="<%= imagehref %><%= image.href %>" alt="<%= image.alt %>" class="thumbs" data-filename="<%= image.href %>">
+		<% }); %>
+	</div>
 </body>
 </html>

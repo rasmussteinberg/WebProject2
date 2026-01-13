@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="et">
 <head>
 	<meta charset="utf-8">
@@ -7,18 +7,22 @@
 	<link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
-	<img src="/images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
-	<h1>Rasmus Steinberg, veebiprogrammeerimine</h1>
-	<hr>
-	<nav>
+    <img src="/images/vp_banner_2025_AA.jpg" alt="Kursuse bänner">
+    <h1>Rasmus Steinberg, veebiprogrammeerimine</h1>
+    <hr>
+    <nav>
 		<a href="/">Avaleht</a>
 		<a href="/vanasonad">Vanasõnad</a>
 		<a href="/visitlog/registervisit">Registreeri külastus</a>
-        <a href="/visitlog">Registreeritud külastajad</a>
+		<a href="/visitlog">Registreeritud külastajad</a>
 		<a href="/eestifilm">Eesti film</a>
 		<a href="/galleryphotoupload">Galeriipiltide üleslaadimine</a>
+		<a href="/gallery">Fotogalerii</a>
+		<a href="/photogallery">Fotogalerii (lk)</a>
+		<a href="/news">Uudised</a>
+		<a href="/signup">Kasutajakonto loomine</a>
 	</nav>
-	<hr>
+    <hr>
 	<p>See leht on loodud <a href="https://www.tlu.ee">Tallinna Ülikoolis</a> veebiprogrammeerimise kurusel ja ei oma mõistlikku sisu.</p>
 	<p>Algul lihtsalt HTML ja varsti juba Node.Js.</p>
 	<h2>Uusim avalik foto</h2>
@@ -26,6 +30,14 @@
 		<img src="<%= imgFile %>" alt="<%= imgAlt %>">
 	<% } else { %>
 		<p>Uut avalikku fotot ei leitud.</p>
+	<% } %>
+	<h2>Uusim uudis</h2>
+	<% if (latestNews) { %>
+		<h3><%= latestNews.title %></h3>
+		<p><%= latestNews.content %></p>
+		<p>Aegub: <%= latestNews.expire %></p>
+	<% } else { %>
+		<p>Uudiseid ei leitud.</p>
 	<% } %>
 </body>
 </html>

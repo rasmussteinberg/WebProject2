@@ -23,24 +23,26 @@
 		<a href="/signup">Kasutajakonto loomine</a>
 	</nav>
     <hr>
-	<h2>Eesti film</h2>
-	<ul>
-		<li><a href="/eestifilm/inimesed">Eesti filmiinimesed</a></li>
-		<li><a href="/eestifilm/inimesed_add">Eesti filmiinimeste lisamine</a></li>
-		<li><a href="/eestifilm/ametid">Eesti filmindusametid</a></li>
-		<li><a href="/eestifilm/ametid_add">Eesti filmindusameti lisamine</a></li>
-	</ul>
-	<hr>
-	<h2>Filmiinimeste ametite lisamine</h2>
-	<form method="POST">
-	  <label for="positionNameInput">Ameti nimi</label>
-	  <input id="positionNameInput" name="positionNameInput" type="text" placeholder="Ameti nimi" required>
-	  <br>
-	  <label for="descriptionInput">Ameti kirjeldus</label>
-	  <input id="descriptionInput" name="descriptionInput" type="text" placeholder="Kirjeldus" required>
-	  <br>
-	  <input id="positionSubmit" name="positionSubmit" type="submit" value="Salvesta">
+	<h2>Lisa uudis</h2>
+	<form method="POST" enctype="multipart/form-data">
+		<label for="titleInput">Uudise pealkiri: </label>
+		<input type="text" id="titleInput" name="titleInput" placeholder="Uudise pealkiri ...">
+		<br>
+		<label for="newsInput">Uudise sisu: </label>
+		<br>
+		<textarea id="newsInput" name="newsInput" placeholder="Uudise sisu ..." cols="100" rows="5"></textarea>
+		<br>
+		<label for="expireInput">Uudise aegumiskuupäev: </label>
+		<input type="date" id="expireInput" name="expireInput">
+		<br>
+		<label for="photoInput">Uudise pilt: </label>
+		<input type="file" id="photoInput" name="photoInput" accept="image/*">
+		<br>
+		<label for="altInput">Pildi alttekst: </label>
+		<input type="text" id="altInput" name="altInput" placeholder="Pildi kirjeldus ...">
+		<br>
+		<input type="submit" id="newsSubmit" name="newsSubmit" value="Salvesta">
 	</form>
-	<p>Staatus: <%= notice %></p>
+	<p><%= notice %></p>
 </body>
 </html>

@@ -33,7 +33,10 @@ app.get("/", async (req, res)=>{
 				imgAlt = rows[0].alttext;
 			}
 		}
-		res.render("index", {imgFile: imgFile, imgAlt: imgAlt});
+		const newsReq = "SELECT title, content, expire, created_at FROM news WHERE expire >= CURDATE() ORDER BY created_at DESC LIMIT 1";
+		const [newsRows] = await conn.execute(newsReq);
+		const latestNews = newsRows.length > 0 ? newsRows[0] : null;
+		res.render("index", {imgFile: imgFile, imgAlt: imgAlt, latestNews: latestNews});
 	}
 	catch(err){
 		res.render("index");
@@ -56,10 +59,10 @@ app.get("/vanasonad", (req, res)=>{
 	let folkWisdom = [];
 	fs.readFile(vanasonaFile, "utf8", (err, data)=>{
 		if(err){
-			res.render("genlist", {heading: "Valik Eesti vanasAænu", listData: ["Ei leidnud A¬htegi vanasAæna!"]});
+			res.render("genlist", {heading: "Valik Eesti vanasõnu", listData: ["Ei leidnud ühtegi vanasõna!"]});
 		} else {
 			folkWisdom = data.split(";");
-			res.render("genlist", {heading: "Valik Eesti vanasAænu", listData: folkWisdom});
+			res.render("genlist", {heading: "Valik Eesti vanasõnu", listData: folkWisdom});
 		}
 	});
 });
@@ -72,5 +75,17 @@ app.use("/eestifilm", eestifilmRoute);
 
 const galleryphotouploadRoute = require("./routes/galleryphotouploadRoute");
 app.use("/galleryphotoupload", galleryphotouploadRoute);
+
+const galleryRoute = require("./routes/galleryRoutes");
+app.use("/gallery", galleryRoute);
+
+const photogalleryRoute = require("./routes/photogalleryRoutes");
+app.use("/photogallery", photogalleryRoute);
+
+const newsRoute = require("./routes/newsRoutes");
+app.use("/news", newsRoute);
+
+const signupRoute = require("./routes/signupRoutes");
+app.use("/signup", signupRoute);
 
 app.listen(5332);
